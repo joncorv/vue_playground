@@ -2,7 +2,6 @@
 import { ref } from "vue";
 import "./main.css";
 
-
 const myContainer = ref(null);
 const mouseStatus = ref(false);
 const relativeX = ref(0);
@@ -17,7 +16,6 @@ const containerMouseMove = (event) => {
   percentX.value = Math.round((relativeX.value / rect.width) * 10000) / 100;
   percentY.value = Math.round((relativeY.value / rect.width) * 10000) / 100;
 }
-
 const containerMouseEnter = () => { mouseStatus.value = true }
 const containerMouseLeave = () => { mouseStatus.value = false }
 
@@ -28,11 +26,13 @@ const notes = [12, 24, 5, 75, 33, 95, 50, 80];
 
 
 <template>
-  <p> relative x: {{ relativeX }} </p>
-  <p> relative y: {{ relativeY }} </p>
-  <p> percent x: {{ percentX }} </p>
-  <p> percent y: {{ percentY }} </p>
-  <p> mouse status: {{ mouseStatus }} </p>
+  <div class="hud">
+    <p> relative x: {{ relativeX }} </p>
+    <p> relative y: {{ relativeY }} </p>
+    <p> percent x: {{ percentX }} </p>
+    <p> percent y: {{ percentY }} </p>
+    <p> mouse status: {{ mouseStatus }} </p>
+  </div>
 
 
   <div ref="myContainer" class="myContainer" @mousemove="containerMouseMove" @mouseenter="containerMouseEnter"
@@ -57,6 +57,18 @@ const notes = [12, 24, 5, 75, 33, 95, 50, 80];
   background-color: hsl(0, 0%, 25%);
   align-items: center;
   border-radius: 25px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.hud {
+  background-color: hsl(0, 0%, 25%);
+  width: 20rem;
+  height: 20rem;
+  border-radius: 25px;
+  padding: 2rem;
+  margin: 1rem;
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.2),
     0 2px 4px rgba(0, 0, 0, 0.6);
