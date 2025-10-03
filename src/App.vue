@@ -38,7 +38,7 @@ const notes = [12, 24, 5, 75, 33, 95, 50, 80];
   <div ref="container" @mousemove="containerMouseMove" @mouseenter="containerMouseEnter"
     @mouseleave="containerMouseLeave" class="flex items-center w-full h-56 bg-amber-300 text-5xl">
     <div v-for="(note, index) in notes" :key="index" class="note" :style="{ left: `${note}%` }">
-      <div>child</div>
+      <div class="child">{{ index }}</div>
     </div>
     <div ref="sub-container" class="sub-container w-full h-2 bg-blue-500 "> </div>
   </div>
@@ -55,10 +55,17 @@ const notes = [12, 24, 5, 75, 33, 95, 50, 80];
   /* Center the dot on the position */
   transform: translateX(-50%);
   transform: translateY(-50%);
+  z-index: 1;
+}
+
+.child {
+  /* transform: translate(-100%, -100%); */
+  transform: translate(-150%, -150%);
+  font-size: var(--text-sm);
 }
 
 .sub-container {
-  transition: transform 0.3s ease;
+  transition: transform 0.1s ease;
 }
 
 .sub-container:hover {
